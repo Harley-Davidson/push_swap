@@ -12,19 +12,10 @@
 
 #include "push_swap.h"
 
-t_node *get_last_node(t_node *node)
-{
-	if (node == NULL)
-		return (NULL);
-	while (node->next != NULL)
-		node = node->next;
-	return (node);
-}
-
 void add_node(t_node **stack, int arg)
 {
-	t_node  *last_node;
-	t_node  *new_node;
+	t_node	*last_node;
+	t_node	*new_node;
 
 	new_node = malloc(sizeof(t_node));
 	if (new_node == NULL)
@@ -44,7 +35,7 @@ void add_node(t_node **stack, int arg)
 
 void	init_stack(t_node **a, char **argv, int	argc)
 {
-	int		i;
+	int	i;
 
 	if (argv == NULL || a == NULL)
 		return ;
@@ -58,23 +49,6 @@ void	init_stack(t_node **a, char **argv, int	argc)
 			free(argv[i++]);
 		free(argv);
 	}
-}
-
-int	get_node_cnt(t_node **stack)
-{
-	int		i;
-	t_node	*a;
-
-	if (stack == NULL)
-		return (0);
-	i = 0;
-	a = *stack; 
-	while (a)
-	{
-		a = (a)->next;
-		i++;
-	}
-	return (i);
 }
 
 void	free_stacks(t_node **a, t_node **b)
@@ -99,13 +73,15 @@ void	free_stacks(t_node **a, t_node **b)
 	}
 }
 
-void	print_stack(t_node **node)
+void	print_stack(t_node **node, char *stack_name)
 {
-	t_node  *buf;
+	t_node	*buf;
 	
 	if (node == NULL || *node == NULL)
 		return ;
 	buf = *node;
+	ft_putstr_fd(stack_name, 1);
+	ft_putstr_fd(": ", 1);
 	while (buf != NULL )
 	{
 		ft_putnbr_fd(buf->value, 1);

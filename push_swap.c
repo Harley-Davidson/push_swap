@@ -12,80 +12,89 @@
 
 #include "push_swap.h"
 
-int	is_sorted(t_node **a)
+static void	stacks_rotation(t_node **a, t_node **b,
+								t_node *cheapest_node, char *func)
 {
-	t_node	*node;
-
-	if (a == NULL || *a == NULL)
-		return (0);
-	node = *a;
-	while (node->next)
+	while (*a != cheapest_node->target_node	&& *b != cheapest_node)
 	{
-		if (node->value > (node->next)->value)
-			return (0);
-		node = node->next;
+		if (ft_strncmp(func, "rr\n", 3) == 0)
+			rotate_both(a, b, func);
+		else if (ft_strncmp(func, "rrr\n", 4) == 0)
+			reverse_rotate_both(a, b, func);
 	}
-	return (1);
+	set_position(a);
+	set_position(b);
 }
 
-/*
- * 	~If the 1* is the biggest, ra (biggest to bottom)
- * 	~If the 2* is the biggest, rra (biggest to bottom)
- * 	~Now i have forcefully the Biggest at the bottom
- * 		so i just chek 1° and 2°
-*/
-void	sort_three(t_node **a)
+void	finish_rotation(t_node **stack, t_node *top_node, char *stack_name)
 {
-	if (get_node_cnt(a) == 3)
+	while (*stack != top_node)
 	{
-		if ((*a)->value > ((*a)->next)->value 
-				&& (*a)->value > (((*a)->next)->next)->value)
-			rotate(a, "ra\n");
-		else if (((*a)->next)->value > (*a)->value 
-				&& ((*a)->next)->value > (((*a)->next)->next)->value)
-			reverse_rotate(a, "rra\n");
-	}
-	if ((*a)->value > ((*a)->next)->value)
-		swap(a, "sa\n");
-}
-
-/*
-	22 12 8 33 11 -> [sa] -> 12 22 8 33 11 -> [pb][pb] -> 
-	8 33 11 | 22 12 -> [sort3] -> 8 11 33 | 22 12 -> [pa] -> 
-	22 8 11 33 | 12 -> [sort3] -> 8 11 22 33 | 12 -> [pa] -> 
-	12 8 11 22 33 -> [sort3] -> 8 11 12 22 33
-*/
-void	sort_five(t_node **a, t_node **b)
-{
-	if ((*a)->value > ((*a)->next)->value)
-		swap(a, "sa\n");
-	push(a, b, "pb\n");
-	if (get_node_cnt(a) == 4)
-		push(a, b, "pb\n");
-	sort_three(a);
-	while (*b != NULL)
-	{
-		push(b, a, "pa\n");
-		if ((*a)->value > (get_last_node(*a))->value)
-			rotate(a, "ra\n");
+		ft_putstr_fd("r", 1);
+		if (top_node->is_above_med)
+			rotate(stack, "");
 		else
-			sort_three(a);
+		{
+			reverse_rotate(stack, "");
+			ft_putstr_fd("r", 1);
+		}
+		ft_putstr_fd(stack_name, 1);
+		ft_putstr_fd("\n", 1);
 	}
 }
 
-void	quick_sort(t_node **a, t_node **b)
+static void	move_nodes(t_node **a, t_node **b)
 {
+	t_node	*c;
+	char	*func;
 
+	c = get_cheapest_node(b);
+	if (c->is_above_med	&& (c->target_node)->is_above_med)
+		stacks_rotation(a, b, c, "rr\n");
+	else if (!(c->is_above_med)	&& !((c->target_node)->is_above_med))
+		stacks_rotation(a, b, c, "rrr\n");
+	finish_rotation(b, c, "b");
+	finish_rotation(a, c->target_node, "a");
+	push(b, a, "pa\n");
+}
+
+void	sort_all(t_node **a, t_node **b, int size)
+{
+	t_node	*smallest;
+
+	while (size > 3)
+	{
+		push(a, b, "pb\n");
+		size--;
+	}
+	sort_three(a, size);
+	while (*b)
+	{
+		print_stack(a, "a");
+		print_stack(b, "b");
+		update_stacks(a, b);
+		move_nodes(a, b);
+	}
+	print_stack(a, "a");
+	set_position(a);
+	smallest = get_smallest_node(a);
+	if (smallest->is_above_med)
+		while (*a != smallest)
+			rotate(a, "ra\n");
+	else
+		while (*a != smallest)
+			reverse_rotate(a, "rra\n");
 }
 
 void	push_swap(t_node **a, t_node **b)
 {
-	if (is_sorted(a))
-		return ;
-	if (get_node_cnt(a) <= 3)
-		sort_three(a);
-	else if (get_node_cnt(a) <= 5)
-		sort_five(a, b);
+	int	size_a;
+
+	size_a = get_node_cnt(a);
+	if (size_a <= 3)
+		sort_three(a, size_a);
+	else if (size_a <= 5)
+		sort_five(a, b, size_a);
 	else
-		quick_sort(a, b);
+		sort_all(a, b, size_a);
 }

@@ -2,6 +2,8 @@
     "files.associations": {
         "push_swap.h": "c",
         "libft.h": "c",
-        "ft_printf.h": "c"
+        "ft_printf.h": "c",
+        "algorithm": "c",
+        "random": "c"
     }
 }
