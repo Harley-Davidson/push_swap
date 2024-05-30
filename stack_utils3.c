@@ -73,3 +73,25 @@ t_node	*get_smallest_node(t_node **stack)
 	}
 	return (smallest_node);
 }
+
+t_node	*get_biggest_node(t_node **stack)
+{
+	int		biggest;
+	t_node	*node;
+	t_node	*biggest_node;
+	
+	node = *stack;
+	if (node == NULL)
+		return (NULL);
+	biggest = INT_MIN;
+	while (node != NULL)
+	{
+		if (node->value > biggest)
+		{
+			biggest = node->value;
+			biggest_node = node;
+		}
+		node = node->next;
+	}
+	return (biggest_node);
+}

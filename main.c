@@ -31,8 +31,8 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	init_stack(&a, argv, argc);
-	print_stack(&a, "a");
+	//print_stack(&a, "a");
 	push_swap(&a, &b);
-	print_stack(&a, "a");
+	//print_stack(&a, "a");
 	free_stacks(&a, &b);
 }

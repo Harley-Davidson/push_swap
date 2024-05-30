@@ -40,6 +40,7 @@ int		get_node_cnt(t_node **a);
 t_node	*get_last_node(t_node *node);
 t_node	*get_cheapest_node(t_node **stack);
 t_node	*get_smallest_node(t_node **stack);
+t_node	*get_biggest_node(t_node **stack);
 
 // rules: rules_swap_push & rules_rotate
 void	swap(t_node **a, char* rule_name);

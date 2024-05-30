@@ -70,12 +70,9 @@ void	sort_all(t_node **a, t_node **b, int size)
 	sort_three(a, size);
 	while (*b)
 	{
-		print_stack(a, "a");
-		print_stack(b, "b");
 		update_stacks(a, b);
 		move_nodes(a, b);
 	}
-	print_stack(a, "a");
 	set_position(a);
 	smallest = get_smallest_node(a);
 	if (smallest->is_above_med)

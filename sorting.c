@@ -36,8 +36,8 @@ int	is_sorted(t_node **a)
 */
 void	sort_three(t_node **a, int size)
 {
-	if (is_sorted(a))
-		return ;
+//	if (is_sorted(a))
+//		return ;
 	if (size == 3)
 	{
 		if ((*a)->value > ((*a)->next)->value 
@@ -51,28 +51,26 @@ void	sort_three(t_node **a, int size)
 		swap(a, "sa\n");
 }
 
-/*
-	22 12 8 33 11 -> [sa] -> 12 22 8 33 11 -> [pb][pb] -> 
-	8 33 11 | 22 12 -> [sort3] -> 8 11 33 | 22 12 -> [pa] -> 
-	22 8 11 33 | 12 -> [sort3] -> 8 11 22 33 | 12 -> [pa] -> 
-	12 8 11 22 33 -> [sort3] -> 8 11 12 22 33
-*/
 void	sort_five(t_node **a, t_node **b, int size)
 {
+	t_node	*smallest;
+
 	if (is_sorted(a))
 		return ;
-	if ((*a)->value > ((*a)->next)->value)
-		swap(a, "sa\n");
-	push(a, b, "pb\n");
-	if (size == 5)
+	while (size-- > 3)
+	{
+		set_position(a);
+		smallest = get_smallest_node(a);
+		if (smallest->is_above_med)
+			while (*a != smallest)
+				rotate(a, "ra\n");
+		else
+			while (*a != smallest)
+				reverse_rotate(a, "rra\n");
 		push(a, b, "pb\n");
+	}
 	sort_three(a, 3);
 	while (*b != NULL)
-	{
 		push(b, a, "pa\n");
-		if ((*a)->value > (get_last_node(*a))->value)
-			rotate(a, "ra\n");
-		else
-			sort_three(a, 3);
-	}
 }
+
