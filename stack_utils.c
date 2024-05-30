@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void add_node(t_node **stack, int arg)
+void	add_node(t_node **stack, int arg)
 {
 	t_node	*last_node;
 	t_node	*new_node;
@@ -33,7 +33,7 @@ void add_node(t_node **stack, int arg)
 	}
 }
 
-void	init_stack(t_node **a, char **argv, int	argc)
+void	init_stack(t_node **a, char **argv, int argc)
 {
 	int	i;
 
@@ -76,7 +76,7 @@ void	free_stacks(t_node **a, t_node **b)
 void	print_stack(t_node **node, char *stack_name)
 {
 	t_node	*buf;
-	
+
 	if (node == NULL || *node == NULL)
 		return ;
 	buf = *node;

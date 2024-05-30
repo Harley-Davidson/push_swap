@@ -39,8 +39,10 @@ char	**offset_argv(int argc, char **argv)
 {
 	int		i;
 
+	if (argc == 2)
+		return (argv);
 	i = 0;
-	while(i < argc)
+	while (i < argc)
 	{
 		argv[i] = argv[i + 1];
 		i++;
@@ -70,7 +72,7 @@ int	is_duplicated(char **argv)
 
 int	is_arg_error(char **argv)
 {
-	int		num;
+	long	num;
 	char	*s;
 
 	if (is_duplicated(argv))
@@ -85,7 +87,9 @@ int	is_arg_error(char **argv)
 			if (!ft_isdigit(*s))
 				return (1);
 		}
-		if (ft_atoi_long(s) > INT_MAX || ft_atoi_long(s) < INT_MIN)
+		s = *argv;
+		num = ft_atoi_long(s);
+		if (num > INT_MAX || num < INT_MIN)
 			return (1);
 		argv++;
 	}

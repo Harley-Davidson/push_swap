@@ -1,5 +1,7 @@
 SRC	= 	push_swap.c			\
 		stack_utils.c		\
+		stack_utils2.c		\
+		stack_utils3.c		\
 		utils.c				\
 		main.c				\
 		sorting.c			\

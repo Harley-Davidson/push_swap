@@ -12,6 +12,7 @@
 
 #include "push_swap.h"
 
+// To print the stack: print_stack(&a, "a");
 int	main(int argc, char **argv)
 {
 	t_node	*a;
@@ -23,16 +24,16 @@ int	main(int argc, char **argv)
 		return (0);
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
-	else
+	else if (argc > 2)
 		argv = offset_argv(argc, argv);
-	if (is_arg_error(argv))
+	if (*(++argv) == NULL)
+		return (0);
+	if (is_arg_error(--argv))
 	{
 		ft_printf("Error\n");
 		return (1);
 	}
 	init_stack(&a, argv, argc);
-	//print_stack(&a, "a");
 	push_swap(&a, &b);
-	//print_stack(&a, "a");
 	free_stacks(&a, &b);
 }

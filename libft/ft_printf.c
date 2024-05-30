@@ -31,7 +31,7 @@ static void	null_data(t_data *data)
 	data->fmt.is_x_upper = 0;
 	i = 0;
 	while (i < sizeof(data->fmt.num))
-	{	
+	{
 		data->fmt.num[i] = '\0';
 		i++;
 	}

@@ -14,14 +14,14 @@
 
 // implementation of sa: Swap the first 2 elements at the top of stack a.
 //  Do nothing if there is only one or no elements.
-void	swap(t_node **a, char* rule_name)
+void	swap(t_node **a, char *rule_name)
 {
-	t_node *first;
-	t_node *second;
-	t_node *third;
-	
+	t_node	*first;
+	t_node	*second;
+	t_node	*third;
+
 	if (a == NULL || *a == NULL || (*a)->next == NULL)
-		return;
+		return ;
 	first = *a;
 	second = first->next;
 	third = second->next;
@@ -39,7 +39,7 @@ void	swap(t_node **a, char* rule_name)
 	ft_putstr_fd(rule_name, 1);
 }
 
-void	swap_both(t_node **a, t_node **b, char* rule_name)
+void	swap_both(t_node **a, t_node **b, char *rule_name)
 {
 	swap(a, "");
 	swap(b, "");
@@ -48,12 +48,12 @@ void	swap_both(t_node **a, t_node **b, char* rule_name)
 
 // implementation of pa: Take the first element at the top of b
 //  and put it at the top of a. Do nothing if b is empty.
-void	push(t_node **b, t_node **a, char* rule_name)
+void	push(t_node **b, t_node **a, char *rule_name)
 {
-	t_node *first_b;
-	
+	t_node	*first_b;
+
 	if (b == NULL || *b == NULL)
-		return;
+		return ;
 	first_b = *b;
 	*b = (*b)->next;
 	if (*b != NULL)

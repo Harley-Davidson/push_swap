@@ -14,11 +14,11 @@
 
 // implementation of ra:  Shift up all elements of stack a by 1.
 //  The first element becomes the last one.
-void	rotate(t_node **a, char* rule_name)
+void	rotate(t_node **a, char *rule_name)
 {
-	t_node *first;
-	t_node *second;
-	t_node *last;
+	t_node	*first;
+	t_node	*second;
+	t_node	*last;
 
 	if (a == NULL || *a == NULL || (*a)->next == NULL)
 		return ;
@@ -41,7 +41,7 @@ void	rotate(t_node **a, char* rule_name)
 	ft_putstr_fd(rule_name, 1);
 }
 
-void	rotate_both(t_node **a, t_node **b, char* rule_name)
+void	rotate_both(t_node **a, t_node **b, char *rule_name)
 {
 	rotate(a, "");
 	rotate(b, "");
@@ -50,11 +50,11 @@ void	rotate_both(t_node **a, t_node **b, char* rule_name)
 
 // implementation of ra:   Shift down all elements of stack a by 1.
 // The last element becomes the first one.
-void	reverse_rotate(t_node **a, char* rule_name)
+void	reverse_rotate(t_node **a, char *rule_name)
 {
-	t_node *first;
-	t_node *before_last;
-	t_node *last;
+	t_node	*first;
+	t_node	*before_last;
+	t_node	*last;
 
 	if (a == NULL || *a == NULL || (*a)->next == NULL)
 		return ;
@@ -72,7 +72,7 @@ void	reverse_rotate(t_node **a, char* rule_name)
 	ft_putstr_fd(rule_name, 1);
 }
 
-void	reverse_rotate_both(t_node **a, t_node **b, char* rule_name)
+void	reverse_rotate_both(t_node **a, t_node **b, char *rule_name)
 {
 	reverse_rotate(a, "");
 	reverse_rotate(b, "");

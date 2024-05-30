@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils3.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvoloshy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/30 17:00:28 by mvoloshy          #+#    #+#             */
+/*   Updated: 2024/05/30 17:00:30 by mvoloshy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
@@ -9,7 +20,7 @@ int	get_node_cnt(t_node **stack)
 	if (stack == NULL)
 		return (0);
 	i = 0;
-	a = *stack; 
+	a = *stack;
 	while (a)
 	{
 		a = (a)->next;
@@ -26,20 +37,11 @@ t_node	*get_last_node(t_node *node)
 		node = node->next;
 	return (node);
 }
-/*
-t_node *get_first_node(t_node *node)
-{
-	if (node == NULL)
-		return (NULL);
-	while (node->prev != NULL)
-		node = node->prev;
-	return (node);
-}
-*/
+
 t_node	*get_cheapest_node(t_node **stack)
 {
 	t_node	*node;
-	
+
 	node = *stack;
 	if (node == NULL)
 		return (NULL);
@@ -57,7 +59,7 @@ t_node	*get_smallest_node(t_node **stack)
 	int		smallest;
 	t_node	*node;
 	t_node	*smallest_node;
-	
+
 	node = *stack;
 	if (node == NULL)
 		return (NULL);
@@ -79,7 +81,7 @@ t_node	*get_biggest_node(t_node **stack)
 	int		biggest;
 	t_node	*node;
 	t_node	*biggest_node;
-	
+
 	node = *stack;
 	if (node == NULL)
 		return (NULL);

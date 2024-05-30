@@ -15,7 +15,7 @@
 static void	stacks_rotation(t_node **a, t_node **b,
 								t_node *cheapest_node, char *func)
 {
-	while (*a != cheapest_node->target_node	&& *b != cheapest_node)
+	while (*a != cheapest_node->target_node && *b != cheapest_node)
 	{
 		if (ft_strncmp(func, "rr\n", 3) == 0)
 			rotate_both(a, b, func);
@@ -49,9 +49,9 @@ static void	move_nodes(t_node **a, t_node **b)
 	char	*func;
 
 	c = get_cheapest_node(b);
-	if (c->is_above_med	&& (c->target_node)->is_above_med)
+	if (c->is_above_med && (c->target_node)->is_above_med)
 		stacks_rotation(a, b, c, "rr\n");
-	else if (!(c->is_above_med)	&& !((c->target_node)->is_above_med))
+	else if (!(c->is_above_med) && !((c->target_node)->is_above_med))
 		stacks_rotation(a, b, c, "rrr\n");
 	finish_rotation(b, c, "b");
 	finish_rotation(a, c->target_node, "a");
@@ -88,6 +88,8 @@ void	push_swap(t_node **a, t_node **b)
 	int	size_a;
 
 	size_a = get_node_cnt(a);
+	if (is_sorted(a))
+		return ;
 	if (size_a <= 3)
 		sort_three(a, size_a);
 	else if (size_a <= 5)

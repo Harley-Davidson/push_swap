@@ -13,8 +13,8 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include "./libft/libft.h"
-#include "./libft/ft_printf.h"
+# include "./libft/libft.h"
+# include "./libft/ft_printf.h"
 
 typedef struct s_node
 {
@@ -29,8 +29,8 @@ typedef struct s_node
 }	t_node;
 
 // stack_utils
-void 	add_node(t_node **stack, int arg);
-void	init_stack(t_node **a, char **argv, int	argc);
+void	add_node(t_node **stack, int arg);
+void	init_stack(t_node **a, char **argv, int argc);
 void	free_stacks(t_node **a, t_node **b);
 void	print_stack(t_node **node, char *stack_name);
 void	set_position(t_node **b);
@@ -43,13 +43,13 @@ t_node	*get_smallest_node(t_node **stack);
 t_node	*get_biggest_node(t_node **stack);
 
 // rules: rules_swap_push & rules_rotate
-void	swap(t_node **a, char* rule_name);
-void	swap_both(t_node **a, t_node **b, char* rule_name);
-void	push(t_node **a, t_node **b, char* rule_name);
-void	rotate(t_node **a, char* rule_name);
-void	rotate_both(t_node **a, t_node **b, char* rule_name);
-void	reverse_rotate(t_node **a, char* rule_name);
-void	reverse_rotate_both(t_node **a, t_node **b, char* rule_name);
+void	swap(t_node **a, char *rule_name);
+void	swap_both(t_node **a, t_node **b, char *rule_name);
+void	push(t_node **a, t_node **b, char *rule_name);
+void	rotate(t_node **a, char *rule_name);
+void	rotate_both(t_node **a, t_node **b, char *rule_name);
+void	reverse_rotate(t_node **a, char *rule_name);
+void	reverse_rotate_both(t_node **a, t_node **b, char *rule_name);
 
 // sorting
 int		is_sorted(t_node **a);

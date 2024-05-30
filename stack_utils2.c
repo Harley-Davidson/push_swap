@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils2.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mvoloshy <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/30 17:00:21 by mvoloshy          #+#    #+#             */
+/*   Updated: 2024/05/30 17:00:24 by mvoloshy         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static void	set_target_node(t_node **a, t_node **b)
@@ -14,7 +26,7 @@ static void	set_target_node(t_node **a, t_node **b)
 		x = *a;
 		while (x)
 		{
-			if(x->value > y->value && x->value < i)
+			if (x->value > y->value && x->value < i)
 			{
 				i = x->value;
 				t = x;
@@ -41,7 +53,7 @@ static void	set_price(t_node **a, t_node **b)
 	while (y)
 	{
 		y->price = y->position;
-		if(!(y->is_above_med))
+		if (!(y->is_above_med))
 			y->price = size_b - y->position;
 		if ((y->target_node)->is_above_med)
 			y->price += (y->target_node)->position;
@@ -64,7 +76,7 @@ static void	set_cheapest(t_node **b)
 	best_price = INT_MAX;
 	while (y)
 	{
-		if(y->price < best_price)
+		if (y->price < best_price)
 		{
 			best_price = y->price;
 			best_node = y;

@@ -36,15 +36,13 @@ int	is_sorted(t_node **a)
 */
 void	sort_three(t_node **a, int size)
 {
-//	if (is_sorted(a))
-//		return ;
 	if (size == 3)
 	{
-		if ((*a)->value > ((*a)->next)->value 
-				&& (*a)->value > (((*a)->next)->next)->value)
+		if ((*a)->value > ((*a)->next)->value
+			&& (*a)->value > (((*a)->next)->next)->value)
 			rotate(a, "ra\n");
-		else if (((*a)->next)->value > (*a)->value 
-				&& ((*a)->next)->value > (((*a)->next)->next)->value)
+		else if (((*a)->next)->value > (*a)->value
+			&& ((*a)->next)->value > (((*a)->next)->next)->value)
 			reverse_rotate(a, "rra\n");
 	}
 	if ((*a)->value > ((*a)->next)->value)
@@ -73,4 +71,3 @@ void	sort_five(t_node **a, t_node **b, int size)
 	while (*b != NULL)
 		push(b, a, "pa\n");
 }
-
